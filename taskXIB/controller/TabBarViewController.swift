@@ -9,6 +9,9 @@ import UIKit
 
 class TabBarViewController: UITabBarController{
     
+    let homeViewController = HomeViewController(nibName: "HomeViewController", bundle: nil)
+    let finishedTableView = TableViewController(nibName: "TableViewController", bundle: nil)
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -16,23 +19,21 @@ class TabBarViewController: UITabBarController{
         configureUI()
     }
     
-    
-    func configureUI(){
+    func configureUI() {
         
-        let homeViewController = HomeViewController(nibName: "HomeViewController", bundle: nil)
-        homeViewController.tabBarItem = UITabBarItem(title: "Home", image: nil, tag: 0)
+        let homeNav = UINavigationController(rootViewController: homeViewController)
+        homeViewController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "checklist.unchecked"), tag: 0)
+       
+        let finishedNav = UINavigationController(rootViewController: finishedTableView)
+        finishedTableView.tabBarItem = UITabBarItem(title: "Finalizados", image: UIImage(systemName: "checklist.checked"), tag: 1)
         
-        let finishedTableView = TableViewController(nibName: "TableViewController", bundle: nil)
-        finishedTableView.tabBarItem = UITabBarItem(title: "Finalizados", image: nil, tag: 1)
-        
-        viewControllers = [homeViewController, finishedTableView]
+        viewControllers = [homeNav, finishedNav]
         
         tabBar.isTranslucent = false
-        
         tabBar.tintColor = .black
-        
-        
+        tabBar.backgroundColor = .lightGray
     }
+    
     
     
     

@@ -15,6 +15,8 @@ class TableViewController: UITableViewController {
         
         super.viewDidLoad()
         
+        title = "Finalizados"
+        
         navigationController?.navigationBar.prefersLargeTitles = true
         
         self.clearsSelectionOnViewWillAppear = false
