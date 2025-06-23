@@ -148,6 +148,7 @@
 				DEVELOPMENT_TEAM = 3XP9ML3VX6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = taskXIB/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Lista XIB";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -175,6 +176,7 @@
 				DEVELOPMENT_TEAM = 3XP9ML3VX6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = taskXIB/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Lista XIB";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
