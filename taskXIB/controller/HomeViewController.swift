@@ -29,7 +29,9 @@ class HomeViewController: UIViewController {
         
         //navigationController?.navigationBar.prefersLargeTitles = true
         
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        //table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        table.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier")
         
         textField.delegate = self
         textField.clearButtonMode = .whileEditing
@@ -39,8 +41,8 @@ class HomeViewController: UIViewController {
         
         fetchTask()
         
-        
     }
+    
     
     // MARK: - Actions
     @IBAction func button(_ sender: UIButton) {
@@ -63,12 +65,14 @@ class HomeViewController: UIViewController {
     func saveTask(name: String) {
         let task = Task(context: context)
         task.name = name
+        task.isDone = false
         do {
             try context.save()
         } catch {
             print("Save Error: \(error)")
         }
     }
+    
 }
 
 // MARK: - UITableViewDataSource & UITableViewDelegate
@@ -81,10 +85,25 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as? TableViewCell else {
+            return UITableViewCell()
+        }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let tasks = task[indexPath.row]
-        cell.textLabel?.text = tasks.name
+        let currentTask = task[indexPath.row]
+        cell.configure(with: currentTask)
+        
+        // Callback do switch
+        cell.switchChanged = { [weak self] isOn in
+            guard let self = self else { return }
+            currentTask.isDone = isOn
+            do {
+                try self.context.save()
+                print("Atualizado: \(currentTask.name ?? "") -> \(isOn)")
+            } catch {
+                print("Erro ao salvar: \(error)")
+            }
+        }
+        
         return cell
     }
     
@@ -112,7 +131,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        // (Opcional) implementar reordenação
+        //
     }
 }
 

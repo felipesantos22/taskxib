@@ -24,18 +24,24 @@
                         <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <size key="shadowOffset" width="0.0" height="0.0"/>
                     </label>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z55-V4-vjL">
+                        <rect key="frame" x="510" y="48.666666666666657" width="51" height="31"/>
+                    </switch>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="KIZ-et-hNy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="MbJ-wj-4Qr"/>
-                    <constraint firstItem="KIZ-et-hNy" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="rKG-h3-zG5"/>
+                    <constraint firstItem="KIZ-et-hNy" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="EJp-YD-lKd"/>
+                    <constraint firstItem="Z55-V4-vjL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="VvA-4J-PdA"/>
+                    <constraint firstItem="KIZ-et-hNy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="Y9b-U7-6rY"/>
+                    <constraint firstAttribute="trailing" secondItem="Z55-V4-vjL" secondAttribute="trailing" constant="20" id="rOI-Vn-J0N"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="doneSwitch" destination="Z55-V4-vjL" id="rdx-Eg-o22"/>
                 <outlet property="label" destination="KIZ-et-hNy" id="uMv-Hh-WCi"/>
             </connections>
             <point key="canvasLocation" x="182.44274809160305" y="16.901408450704228"/>

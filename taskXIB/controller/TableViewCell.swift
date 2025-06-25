@@ -9,18 +9,31 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
     
+    // MARK: - Callback
+    var switchChanged: ((Bool) -> Void)?
+    
     // MARK: - Outlets
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var doneSwitch: UISwitch!
     
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        doneSwitch.addTarget(self, action: #selector(switchToggled(_:)), for: .valueChanged)
     }
     
-    // MARK: - Selection
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
+    @objc private func switchToggled(_ sender: UISwitch) {
+        switchChanged?(sender.isOn)
+    }
+    
+    func configure(with task: Task) {
+        label.text = task.name
+        doneSwitch.isOn = task.isDone
     }
 }
+
+
+
+  
+
+  

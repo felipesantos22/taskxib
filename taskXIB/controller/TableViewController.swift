@@ -26,21 +26,35 @@ class TableViewController: UITableViewController {
         clearsSelectionOnViewWillAppear = false
         navigationItem.rightBarButtonItem = editButtonItem
         
-        tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
+        
+        //tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchTask()
+        fetchFinished()
     }
     
     // MARK: - Core Data Methods
-    func fetchTask() {
+    
+    /*func fetchTask() {
+     do {
+     task = try context.fetch(Task.fetchRequest())
+     tableView.reloadData()
+     } catch {
+     print("Fetch Error: \(error)")
+     }
+     }*/
+    
+    func fetchFinished(){
+        let request: NSFetchRequest<Task> = Task.fetchRequest()
+        request.predicate = NSPredicate(format: "isDone == true", NSNumber(value: true))
         do {
-            task = try context.fetch(Task.fetchRequest())
+            task = try context.fetch(request)
             tableView.reloadData()
         } catch {
-            print("Fetch Error: \(error)")
+            print("Erro ao buscar favoritos: \(error)")
         }
     }
     
@@ -54,13 +68,9 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as? TableViewCell else {
-            return UITableViewCell()
-        }
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         let tasks = task[indexPath.row]
-        cell.label.text = tasks.name
-        
+        cell.textLabel?.text = tasks.name
         return cell
     }
     
