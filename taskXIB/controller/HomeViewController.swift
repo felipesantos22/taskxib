@@ -22,6 +22,13 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Lista de Tarefas"
+        navigationController?.navigationBar.titleTextAttributes = [
+            .font: UIFont.systemFont(ofSize: 32, weight: .bold)
+        ]
+        
+        //navigationController?.navigationBar.prefersLargeTitles = true
+        
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         textField.delegate = self
@@ -32,10 +39,6 @@ class HomeViewController: UIViewController {
         
         fetchTask()
         
-        print("Navigation Bar prefersLargeTitles:", navigationController?.navigationBar.prefersLargeTitles ?? false)
-        print("Navigation Bar height:", navigationController?.navigationBar.frame.height ?? 0)
-        print("Safe Area Insets:", view.safeAreaInsets)
-
         
     }
     

@@ -18,7 +18,7 @@
         <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bouncesZoom="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <viewLayoutGuide key="safeArea" id="vLr-E1-eTs"/>
+            <viewLayoutGuide key="safeArea" id="eEY-H7-HUU"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <color key="sectionIndexColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <color key="sectionIndexBackgroundColor" systemColor="underPageBackgroundColor"/>
